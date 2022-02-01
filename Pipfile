@@ -1,0 +1,17 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+matplotlib = "*"
+numpy = "*"
+pandas = "*"
+plotly = "*"
+scipy = "*"
+streamlit = "*"
+
+[requires]
+python_version = "3.7"
+
+[dev-packages]
