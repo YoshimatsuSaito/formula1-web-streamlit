@@ -27,9 +27,11 @@
 ├── Pipfile
 ├── Pipfile.lock
 ├── README.md
+├── requirements.txt
 └── views
     ├── __init__.py
-    ├── race_result.py
+    ├── qualify_result.py
+    ├── race_lap_result.py
     ├── season_result.py
     └── strategy.py
 ```
