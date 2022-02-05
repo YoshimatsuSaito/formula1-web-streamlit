@@ -15,7 +15,7 @@ def home():
         "So far, data about drivers championship points, pace graph, and qualifying result of each Grand Prix is available (data source: https://www.kaggle.com/rohanrao/formula-1-world-championship-1950-2020)."
     )
     st.markdown(
-        "Optimal race strategy in this app just shows the fastest tyre combination and how many laps should by completed by each tyre assuming linear tyre degradation without considering other factors (ex. track position)."
+        "Optimal race strategy in this app just shows the fastest tyre combination and how many laps should be completed by each tyre assuming linear tyre degradation without considering other factors (ex. track position)."
     )
     st.markdown("Go to left-side selectbox and select views you want to see.")
 
