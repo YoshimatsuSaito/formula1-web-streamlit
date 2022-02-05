@@ -3,6 +3,7 @@ import streamlit as st
 from views.strategy import strategy
 from views.season_result import season_result
 from views.race_lap_result import race_lap_result
+from views.qualify_result import qualify_result
 
 
 def home():
@@ -14,6 +15,7 @@ def main():
         "Home": home,
         "Season result": season_result,
         "Grand prix result (lap time)": race_lap_result,
+        "Qualify result": qualify_result,
         "Optimal strategy": strategy,
     }
     selected_views = st.sidebar.selectbox(label="views", options=views.keys())
