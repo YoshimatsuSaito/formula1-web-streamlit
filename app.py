@@ -17,7 +17,7 @@ def home():
     st.markdown(
         "Optimal race strategy in this app just shows the fastest tyre combination and how many laps should by completed by each tyre assuming linear tyre degradation without considering other factors (ex. track position)."
     )
-    st.markdown("Go to select left side selectbox and use each function!")
+    st.markdown("Go to left-side selectbox and select views you want to see.")
 
 
 def main():
