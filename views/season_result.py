@@ -30,7 +30,7 @@ def season_result():
     # select drivers to visualize
     list_drivers = df_season.groupby("driverRef")["points"].max().sort_values(
         ascending=False).index.tolist()
-    list_default_drivers = list_drivers[:5].index.tolist()
+    list_default_drivers = list_drivers[:5]
     selected_items = st.multiselect(
         "Select drivers (default = top 5 of the season)",
         options=list_drivers,

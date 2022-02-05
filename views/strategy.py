@@ -245,20 +245,27 @@ def strategy():
     # get combination of tyre
     dict_tyre_combi = create_tyre_combination()
     
-    # get optimal strategy based on given tyre combination
-    df_res = get_optimization_results(
-        pitloss=pitloss,
-        total_lap=total_lap,
-        dict_degradation=dict_degradation,
-        dict_pace=dict_pace,
-        track_improvement=track_improvement,
-        fuel_effect=fuel_effect,
-        dict_tyre_combi=dict_tyre_combi
-    )
+    # start calculate optimal strategy when this button is pushed
+    col1, col2, col3 = st.columns([1,1,1])
+    with col2:
+        button_ = st.button("Calculate optimal strategy!")
+    if button_:
+        # get optimal strategy based on given tyre combination
+        df_res = get_optimization_results(
+            pitloss=pitloss,
+            total_lap=total_lap,
+            dict_degradation=dict_degradation,
+            dict_pace=dict_pace,
+            track_improvement=track_improvement,
+            fuel_effect=fuel_effect,
+            dict_tyre_combi=dict_tyre_combi
+        )
+        
+        # visualize optimal strategies
+        st.subheader("Optimal strategies based on given information above")
+        show_pace_graph(df_res=df_res)
     
-    # visualize optimal strategies
-    st.header("Optimal strategies based on given information above")
-    show_pace_graph(df_res=df_res)
+
 
 if __name__ == "__main__":
     strategy()
