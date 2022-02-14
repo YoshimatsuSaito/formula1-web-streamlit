@@ -38,7 +38,7 @@ def season_result():
         options=list_drivers,
         default=list_default_drivers,
         key="selected_drivers_season_result")
-    if st.checkbox("All drivers", key="check_alldrivers_season_result"):
+    if st.checkbox("All drivers ", key="check_alldrivers_season_result"):
         selected_items = list_drivers
     df_season_drivers = df_season[df_season["driverRef"].isin(selected_items)]
     df_season_drivers = df_season_drivers.loc[:, [
