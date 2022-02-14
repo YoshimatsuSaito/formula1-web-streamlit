@@ -24,7 +24,9 @@ def season_result():
     list_season = np.sort(df["year"].unique())[::-1].tolist()
     if 2022 in list_season:
         list_season.remove(2022)
-    selected_season = st.selectbox("Select season", list_season)
+    selected_season = st.selectbox("Select season",
+                                   list_season,
+                                   key="selected_season_season_result")
     df_season = df[df["year"] == selected_season]
 
     # select drivers to visualize
@@ -34,8 +36,9 @@ def season_result():
     selected_items = st.multiselect(
         "Select drivers (default = top 5 of the season)",
         options=list_drivers,
-        default=list_default_drivers)
-    if st.checkbox("All drivers"):
+        default=list_default_drivers,
+        key="selected_drivers_season_result")
+    if st.checkbox("All drivers", key="check_alldrivers_season_result"):
         selected_items = list_drivers
     df_season_drivers = df_season[df_season["driverRef"].isin(selected_items)]
     df_season_drivers = df_season_drivers.loc[:, [

@@ -43,7 +43,7 @@ def qualify_result():
     list_season = np.sort(df["year"].unique())[::-1].tolist()
     if 2022 in list_season:
         list_season.remove(2022)
-    selected_season = st.selectbox("Select season", list_season)
+    selected_season = st.selectbox("Select season", list_season, key="selected_season_qualify_result")
     df_season = df[df["year"] == selected_season]
 
     # select round(grand prix) to visualize
@@ -54,7 +54,7 @@ def qualify_result():
         0, "round(gp)", df_season["round_str"] + " (" +
         df_season["name"].str.replace(" Grand Prix", "") + ")")
     list_round = np.sort(df_season["round(gp)"].unique()).tolist()
-    selected_round = st.selectbox("Select round", list_round)
+    selected_round = st.selectbox("Select round", list_round, key="selected_round_qualify_result")
     df_season_round = df_season[df_season["round(gp)"] == selected_round]
 
     # qualifying time of selected grand prix
@@ -83,7 +83,7 @@ def qualify_result():
 
     # select index to visualize
     selected_item = "qualifying time(sec)"
-    if st.checkbox("Gap (%)"):
+    if st.checkbox("Gap (%)", key="check_gap_qualify_result"):
         selected_item = "gap to fastest time(%)"
 
     # visualize by plotly
