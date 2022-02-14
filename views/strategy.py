@@ -173,7 +173,8 @@ def show_pace_graph(df_res):
 
 
 def strategy():
-    st.header("Input information")
+    st.header("Optimal strategy")
+    st.subheader("Input information")
     col_1, col_2, col_3, col_4 = st.columns(4)
     with col_1:
         total_lap = st.number_input(

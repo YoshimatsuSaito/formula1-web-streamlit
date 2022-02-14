@@ -6,6 +6,26 @@ from views.race_lap_result import race_lap_result
 from views.qualify_result import qualify_result
 
 
+# @st.cache(allow_output_mutation=True, suppress_st_warning=True)
+def sr():
+    return season_result()
+
+
+# @st.cache(allow_output_mutation=True, suppress_st_warning=True)
+def rlr():
+    return race_lap_result()
+
+
+# @st.cache(allow_output_mutation=True, suppress_st_warning=True)
+def qr():
+    return qualify_result()
+
+
+# @st.cache(allow_output_mutation=True, suppress_st_warning=True)
+def strat():
+    return strategy()
+
+
 def home():
     st.header("Formula 1 data and strategy")
     st.markdown(
@@ -17,14 +37,19 @@ def home():
     st.markdown(
         "Optimal race strategy in this app just shows the fastest tyre combination and how many laps should be completed by each tyre assuming linear tyre degradation without considering other factors (ex. track position)."
     )
-    st.markdown("Go to left-side selectbox and select views you want to see.")
+    # show each function
+    sr()
+    rlr()
+    qr()
+    strat()
 
 
 def main():
+    st.set_page_config(layout="wide")
     views = {
         "Home": home,
         "Season result": season_result,
-        "Grand prix result (lap time)": race_lap_result,
+        "Grand prix result": race_lap_result,
         "Qualify result": qualify_result,
         "Optimal strategy": strategy,
     }

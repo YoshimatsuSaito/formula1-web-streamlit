@@ -49,7 +49,9 @@ def race_lap_result():
     list_season = np.sort(df["year"].unique())[::-1].tolist()
     if 2022 in list_season:
         list_season.remove(2022)
-    selected_season = st.selectbox("Select season", list_season)
+    selected_season = st.selectbox("Select season",
+                                   list_season,
+                                   key="selected_season_race_lap_result")
     df_season = df[df["year"] == selected_season]
 
     # select round(grand prix) to visualize
@@ -60,7 +62,9 @@ def race_lap_result():
         0, "round(gp)", df_season["round_str"] + " (" +
         df_season["name"].str.replace(" Grand Prix", "") + ")")
     list_round = np.sort(df_season["round(gp)"].unique()).tolist()
-    selected_round = st.selectbox("Select round", list_round)
+    selected_round = st.selectbox("Select round",
+                                  list_round,
+                                  key="selected_round_race_lap_result")
     df_season_round = df_season[df_season["round(gp)"] == selected_round]
 
     # select drivers to visualize
@@ -70,8 +74,9 @@ def race_lap_result():
     list_default_drivers = list_drivers[:5]
     selected_items = st.multiselect("Select drivers (default = top 5 drivers)",
                                     options=list_drivers,
-                                    default=list_default_drivers)
-    if st.checkbox("All drivers"):
+                                    default=list_default_drivers,
+                                    key="selected_drivers_race_lap_result")
+    if st.checkbox("All drivers", key="check_alldrivers_race_lap_result"):
         selected_items = list_drivers
 
     # make variables
@@ -113,18 +118,21 @@ def race_lap_result():
         drop=True)
 
     # visualize by plotly
-    # lap time at each lap
-    fig = px.line(df_lap, x="lap", y="time(sec)", color="driver")
-    fig.update_layout(xaxis=dict(
-        tickmode='linear', tick0=1.0, dtick=5.0, tickfont=dict(size=10)))
-    fig.update_xaxes(tickangle=0)
-    st.plotly_chart(fig)
+    col1, col2 = st.columns(2)
+    with col1:
+        # lap time at each lap
+        fig = px.line(df_lap, x="lap", y="time(sec)", color="driver")
+        fig.update_layout(xaxis=dict(
+            tickmode='linear', tick0=1.0, dtick=5.0, tickfont=dict(size=10)))
+        fig.update_xaxes(tickangle=0)
+        st.plotly_chart(fig)
 
-    # total lap time gap to eventual winner at each lap
-    fig = px.line(df_lap, x="lap", y="gap to winner(sec)", color="driver")
-    fig.update_layout(xaxis=dict(
-        tickmode='linear', tick0=1.0, dtick=5.0, tickfont=dict(size=10)))
-    st.plotly_chart(fig)
+    with col2:
+        # total lap time gap to eventual winner at each lap
+        fig = px.line(df_lap, x="lap", y="gap to winner(sec)", color="driver")
+        fig.update_layout(xaxis=dict(
+            tickmode='linear', tick0=1.0, dtick=5.0, tickfont=dict(size=10)))
+        st.plotly_chart(fig)
 
 
 if __name__ == "__main__":
