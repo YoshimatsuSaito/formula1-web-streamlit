@@ -125,14 +125,14 @@ def race_lap_result():
         fig.update_layout(xaxis=dict(
             tickmode='linear', tick0=1.0, dtick=5.0, tickfont=dict(size=10)))
         fig.update_xaxes(tickangle=0)
-        st.plotly_chart(fig)
+        st.plotly_chart(fig, use_container_width=True)
 
     with col2:
         # total lap time gap to eventual winner at each lap
         fig = px.line(df_lap, x="lap", y="gap to winner(sec)", color="driver")
         fig.update_layout(xaxis=dict(
             tickmode='linear', tick0=1.0, dtick=5.0, tickfont=dict(size=10)))
-        st.plotly_chart(fig)
+        st.plotly_chart(fig, use_container_width=True)
 
 
 if __name__ == "__main__":
