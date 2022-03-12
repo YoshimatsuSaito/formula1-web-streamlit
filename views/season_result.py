@@ -51,7 +51,7 @@ def season_result():
     list_order_points = df_season_drivers.groupby("driverRef")["points"].max(
     ).sort_values(ascending=False).index.tolist()
     fig = px.line(df_season_drivers,
-                  x="name",
+                  x="round",
                   y="points",
                   color="driverRef",
                   labels={
@@ -59,7 +59,13 @@ def season_result():
                       "name": "Grand Prix"
                   },
                   category_orders={"driverRef": list_order_points})
-    fig.update_layout(xaxis=dict(tickmode='linear', tick0=1, dtick=1))
+    fig.update_layout(xaxis=dict(
+        tickmode='array',
+        tick0=1,
+        dtick=1,
+        tickvals=df_season_drivers["round"].tolist(),
+        ticktext=df_season_drivers["name"].tolist(),
+    ))
     st.plotly_chart(fig)
 
 
