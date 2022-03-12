@@ -89,7 +89,7 @@ def qualify_result():
     # visualize by plotly
     fig = px.scatter(df_qualify, x="driver", y=selected_item, color="qualifying round")
     fig.update_traces(marker_size=10)
-    st.plotly_chart(fig)
+    st.plotly_chart(fig, use_container_width=True)
 
 
 if __name__ == "__main__":

@@ -66,7 +66,7 @@ def season_result():
         tickvals=df_season_drivers["round"].tolist(),
         ticktext=df_season_drivers["name"].tolist(),
     ))
-    st.plotly_chart(fig)
+    st.plotly_chart(fig, use_container_width=True)
 
 
 if __name__ == "__main__":
