@@ -227,7 +227,7 @@ def strategy():
             dict_degradation[tyre_name] = st.number_input(
                 label=f"Degradation(sec/lap)", 
                 value=default_degradation, 
-                key=tyre_name, 
+                key=f"{tyre_name}/degradation", 
                 min_value=0.0, 
                 max_value=100.0, 
                 step=0.01,
@@ -236,7 +236,7 @@ def strategy():
             dict_pace[tyre_name] = st.number_input(
                 label=f"Pace(sec/lap)", 
                 value=default_pace, 
-                key=tyre_name, 
+                key=f"{tyre_name}/pace", 
                 min_value=0.0, 
                 max_value=100.0, 
                 step=0.01,
