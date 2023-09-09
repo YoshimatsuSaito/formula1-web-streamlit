@@ -50,8 +50,10 @@ def _read_data() -> pd.DataFrame:
     df = pd.merge(df, df_results, on=["raceId", "driverId"], how="left")
     df.insert(len(df.columns), "time_sec", df["time"].apply(_cvt2seconds))
 
+    return df
 
-def race_lap_result():
+
+def race_lap_result() -> None:
     """Display race lap result view."""
     # read data
     df = _read_data()

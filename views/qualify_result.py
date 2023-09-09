@@ -8,8 +8,8 @@ import streamlit as st
 current_dir = os.path.dirname(__file__)
 
 
-# convert qualifying time written by string to seconds
-def cvt2seconds(t):
+def _cvt2seconds(t):
+    """Convert qualifying time written by string to seconds."""
     if "N" in t or t == "":
         sec = np.nan
     else:  
@@ -20,8 +20,9 @@ def cvt2seconds(t):
             sec = float(t)
     return sec
 
-def qualify_result():
-    # read data
+
+def _read_data() -> pd.DataFrame:
+    """Read data."""
     df_qualifying = pd.read_csv(
         os.path.join(current_dir, "../data/qualifying.csv"),
         usecols=["driverId", "position", "raceId", "q1", "q2", "q3"], dtype={"q1":str, "q2":str, "q3":str})
@@ -34,15 +35,21 @@ def qualify_result():
     df.fillna("", inplace=True)
     df.dropna(inplace=True)
     for q in range(1, 4):
-        df.insert(len(df.columns), f"q{q}_sec", df[f"q{q}"].apply(cvt2seconds))
+        df.insert(len(df.columns), f"q{q}_sec", df[f"q{q}"].apply(_cvt2seconds))
+    
+    return df
+
+
+def qualify_result() -> None:
+    """Display qualifying result view."""
+    # read data
+    df = _read_data()
 
     # header
     st.header("Qualify result")
 
     # select season to visualize
     list_season = np.sort(df["year"].unique())[::-1].tolist()
-    if 2022 in list_season:
-        list_season.remove(2022)
     selected_season = st.selectbox("Select season", list_season, key="selected_season_qualify_result")
     df_season = df[df["year"] == selected_season]
 
