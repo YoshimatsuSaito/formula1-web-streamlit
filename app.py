@@ -7,19 +7,27 @@ from views.qualify_result import qualify_result
 
 
 def display_season_result():
+    """Display season result view."""
     return season_result()
 
+
 def display_race_lap_result():
+    """Display race lap result view."""
     return race_lap_result()
 
+
 def display_qualify_result():
+    """Display qualifying result view."""
     return qualify_result()
 
+
 def display_strategy():
+    """Display strategy view."""
     return strategy()
 
 
 def home():
+    """Display home page."""
     st.header("Formula 1 Data and Strategy Analysis")
     st.markdown(
         "This app provides insights into the FIA Formula 1 World Championship and calculates optimal race strategies based on simple assumptions."
@@ -38,6 +46,7 @@ def home():
 
 
 def main():
+    """Main function."""
     st.set_page_config(layout="wide")
     views = {
         "Home": home,
