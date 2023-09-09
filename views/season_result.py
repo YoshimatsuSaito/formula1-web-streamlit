@@ -8,7 +8,7 @@ import streamlit as st
 current_dir = os.path.dirname(__file__)
 
 
-def read_data() -> pd.DataFrame:
+def _read_data() -> pd.DataFrame:
     """Read data."""
     df_driver_standings = pd.read_csv(
         os.path.join(current_dir, "../data/driver_standings.csv")
@@ -22,7 +22,7 @@ def read_data() -> pd.DataFrame:
 
 def season_result() -> None:
     """Display season result view."""
-    df = read_data()
+    df = _read_data()
 
     # header
     st.header("Season result")
