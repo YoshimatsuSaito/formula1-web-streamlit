@@ -6,55 +6,48 @@ from views.race_lap_result import race_lap_result
 from views.qualify_result import qualify_result
 
 
-# @st.cache(allow_output_mutation=True, suppress_st_warning=True)
-def sr():
+def display_season_result():
     return season_result()
 
-
-# @st.cache(allow_output_mutation=True, suppress_st_warning=True)
-def rlr():
+def display_race_lap_result():
     return race_lap_result()
 
-
-# @st.cache(allow_output_mutation=True, suppress_st_warning=True)
-def qr():
+def display_qualify_result():
     return qualify_result()
 
-
-# @st.cache(allow_output_mutation=True, suppress_st_warning=True)
-def strat():
+def display_strategy():
     return strategy()
 
 
 def home():
-    st.header("Formula 1 data and strategy")
+    st.header("Formula 1 Data and Strategy Analysis")
     st.markdown(
-        "This app shows data about FIA Formula 1 world championship and calculates optimal race strategy on the basis of very simple assumption."
+        "This app provides insights into the FIA Formula 1 World Championship and calculates optimal race strategies based on simple assumptions."
     )
     st.markdown(
-        "So far, data about drivers championship points, pace graph, and qualifying result of each Grand Prix is available (data source: https://www.kaggle.com/rohanrao/formula-1-world-championship-1950-2020)."
+        "Currently, the app offers data on driver championship points, pace graphs, and qualifying results for each Grand Prix. The data source is [Kaggle](https://www.kaggle.com/rohanrao/formula-1-world-championship-1950-2020)."
     )
     st.markdown(
-        "Optimal race strategy in this app just shows the fastest tyre combination and how many laps should be completed by each tyre assuming linear tyre degradation without considering other factors (ex. track position)."
+        "The optimal race strategy feature displays the fastest tire combination and suggests the number of laps to be completed on each tire. This is calculated assuming linear tire degradation and does not take into account other factors such as track position."
     )
-    # show each function
-    sr()
-    rlr()
-    qr()
-    strat()
+    # Display each view
+    display_season_result()
+    display_race_lap_result()
+    display_qualify_result()
+    display_strategy()
 
 
 def main():
     st.set_page_config(layout="wide")
     views = {
         "Home": home,
-        "Season result": season_result,
-        "Grand prix result": race_lap_result,
-        "Qualify result": qualify_result,
-        "Optimal strategy": strategy,
+        "Season Results": display_season_result,
+        "Grand Prix Results": display_race_lap_result,
+        "Qualifying Results": display_qualify_result,
+        "Optimal Strategy": display_strategy,
     }
-    selected_views = st.sidebar.selectbox(label="views", options=views.keys())
-    render_view = views[selected_views]
+    selected_view = st.sidebar.selectbox(label="Views", options=list(views.keys()))
+    render_view = views[selected_view]
     render_view()
 
 

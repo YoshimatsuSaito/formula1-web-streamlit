@@ -1,3 +1,4 @@
 data/*
 venv/*
 scripts/kaggle.json
+*/__pycache__
