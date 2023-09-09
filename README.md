@@ -1,6 +1,6 @@
 # Formula1-Web-Streamlit
 - This app allows you to visualize basic Formula 1 data and calculate an optimal race strategy based on simple assumptions.
-- You can check the app [here](https://yoshimatsusaito-formula1-web-streamlit-app-sy602n.streamlit.app/).
+- You can check the app [here](https://formula1-web-app.streamlit.app/).
 
 ## Project Structure
 
