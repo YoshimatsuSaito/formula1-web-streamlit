@@ -22,10 +22,10 @@
 
 ## Data Preparation Steps
 1. Create a Kaggle account and [download the `kaggle.json` file](https://github.com/Kaggle/kaggle-api#api-credentials). Place this file in the `./scripts/` directory.
-2. Navigate to the `./scripts` directory and execute `sh download_data.sh`. This will download the necessary CSV files into the `./data/` directory.
+2. Create a virtual environment as needed.
+3. Install the required packages using `pip install -r requirements.txt`.
+4. Activate your virtual environment, navigate to the `./scripts` directory and execute `sh download_data.sh`. This will download the necessary CSV files into the `./data/` directory.
 - Data source: https://www.kaggle.com/rohanrao/formula-1-world-championship-1950-2020
 
 ## Running the App
-- Create a virtual environment as needed.
-- Install the required packages using `pip install -r requirements.txt`.
 - Activate your virtual environment and execute `streamlit run app.py` from the root directory of the project.
