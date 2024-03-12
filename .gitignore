@@ -1,4 +1,4 @@
-data/*
+data/*.zip
 venv/*
 scripts/kaggle.json
 */__pycache__
