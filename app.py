@@ -33,7 +33,7 @@ def home():
         "This app provides insights into the FIA Formula 1 World Championship and calculates optimal race strategies based on simple assumptions."
     )
     st.markdown(
-        "Currently, the app offers data on driver championship points, pace graphs, and qualifying results for each Grand Prix. The data source is [Kaggle](https://www.kaggle.com/rohanrao/formula-1-world-championship-1950-2020)."
+        "Currently, the app offers data on driver championship points, pace graphs, and qualifying results for each Grand Prix. The data source is [Kaggle](https://www.kaggle.com/datasets/rohanrao/formula-1-world-championship-1950-2020)."
     )
     st.markdown(
         "The optimal race strategy feature displays the fastest tire combination and suggests the number of laps to be completed on each tire. This is calculated assuming linear tire degradation and does not take into account other factors such as track position."

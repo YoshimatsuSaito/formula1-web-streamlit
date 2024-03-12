@@ -26,7 +26,7 @@
 2. Create a virtual environment as needed.
 3. Install the required packages using `pip install -r requirements.txt`.
 4. Activate your virtual environment, navigate to the `./scripts` directory and execute `sh download_data.sh`. This will download the necessary CSV files into the `./data/` directory.
-- Data source: https://www.kaggle.com/rohanrao/formula-1-world-championship-1950-2020
+- [Data source](https://www.kaggle.com/datasets/rohanrao/formula-1-world-championship-1950-2020)
 
 ## Running the App
 - Activate your virtual environment and execute `streamlit run app.py` from the root directory of the project.
